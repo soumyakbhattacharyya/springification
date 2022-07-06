@@ -18,6 +18,25 @@
 *.zip
 *.tar.gz
 *.rar
+/target/*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.project
+.settings/org.eclipse.m2e.core.prefs
+*.jar
+auditing.demo/.mvn/wrapper/maven-wrapper.properties
+auditing.demo/mvnw
+auditing.demo/mvnw.cmd
+demo/.mvn/wrapper/maven-wrapper.jar
+demo/.mvn/wrapper/maven-wrapper.properties
+demo/mvnw
+demo/mvnw.cmd
+exception.demo/.mvn/wrapper/maven-wrapper.jar
+exception.demo/.mvn/wrapper/maven-wrapper.properties
+exception.demo/mvnw
+exception.demo/mvnw.cmd
+mapstruct.demo/.mvn/wrapper/maven-wrapper.jar
+mapstruct.demo/.mvn/wrapper/maven-wrapper.properties
+mapstruct.demo/mvnw
+mapstruct.demo/mvnw.cmd
