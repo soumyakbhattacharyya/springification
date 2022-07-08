@@ -15,6 +15,7 @@
         <module>exception.demo</module>
         <module>mapstruct.demo</module>
         <module>logging.demo</module>
+        <module>liquibase.demo</module>
         <module>basic</module>
     </modules>
    

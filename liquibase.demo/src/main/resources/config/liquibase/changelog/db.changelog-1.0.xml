@@ -1,0 +1,126 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.12.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="demo author" id="department-ee1442b5">  
+        <createTable tableName="departments">
+            <column name="dept_no" type="CHAR(4)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="dept_name" type="VARCHAR(40)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="demo author" id="employee-2d168913">
+        <createTable tableName="employees">
+            <column name="emp_no" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="birth_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(14)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="ENUM('M', 'F')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hire_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="demo author" id="DepartmentEmployee-85749758">
+        <createTable tableName="dept_emp">
+            <column name="emp_no" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="dept_no" type="CHAR(4)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="from_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="demo author" id="DepartmentManager-425993aa">
+        <createTable tableName="dept_manager">
+            <column name="emp_no" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="dept_no" type="CHAR(4)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="from_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="demo author" id="1657103334523-5">
+        <createTable tableName="salaries">
+            <column name="emp_no" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="salary" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_date" type="date">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="to_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-6">
+        <createTable tableName="titles">
+            <column name="emp_no" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="from_date" type="date">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="to_date" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-7">
+        <createIndex indexName="dept_no" tableName="dept_emp">
+            <column name="dept_no"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-8">
+        <createIndex indexName="dept_no" tableName="dept_manager">
+            <column name="dept_no"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-9">
+        <addForeignKeyConstraint baseColumnNames="emp_no" baseTableName="dept_emp" constraintName="dept_emp_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="emp_no" referencedTableName="employees" validate="true"/>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-10">
+        <addForeignKeyConstraint baseColumnNames="dept_no" baseTableName="dept_emp" constraintName="dept_emp_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="dept_no" referencedTableName="departments" validate="true"/>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-11">
+        <addForeignKeyConstraint baseColumnNames="emp_no" baseTableName="dept_manager" constraintName="dept_manager_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="emp_no" referencedTableName="employees" validate="true"/>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-12">
+        <addForeignKeyConstraint baseColumnNames="dept_no" baseTableName="dept_manager" constraintName="dept_manager_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="dept_no" referencedTableName="departments" validate="true"/>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-13">
+        <addForeignKeyConstraint baseColumnNames="emp_no" baseTableName="salaries" constraintName="salaries_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="emp_no" referencedTableName="employees" validate="true"/>
+    </changeSet>
+    <changeSet author="demo author" id="1657103334523-14">
+        <addForeignKeyConstraint baseColumnNames="emp_no" baseTableName="titles" constraintName="titles_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="emp_no" referencedTableName="employees" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
