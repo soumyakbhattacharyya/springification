@@ -16,7 +16,7 @@
         <module>mapstruct.demo</module>
         <module>logging.demo</module>
         <module>liquibase.demo</module>
-        <module>basic</module>
+        <module>pom.demo</module>
     </modules>
    
 </project>
